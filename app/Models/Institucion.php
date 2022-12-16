@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Institucion extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'codigo_dane',
+        'nombre',
+        'sector'
+    ];
+    public function sedes()
+    {
+        return $this->hasMany(Sedes::class,
+            'codigo_dane_institucion',
+            'codigo_dane'
+        );
+    }
+
+}

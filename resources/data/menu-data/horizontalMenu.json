@@ -1,0 +1,67 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "icon": "home",
+      "slug": "dashboard-ecommerce",
+      "url": "dashboard/ecommerce"      
+    },    
+    {
+      "name": "Data",
+      "icon": "database",
+      "dropdown": "1",
+      "slug": "",
+      "submenu": [
+        {
+          
+          "name": "Instituciones Oficiales",
+          "dropdown": "1",
+          "icon": "file-text",
+          "slug": "",
+          "submenu": [
+            {
+              "url": "institucionesOficiales/index",
+              "name": "Datos cargados",
+              "icon": "users",
+              "slug": "institucionesOficiales-index"
+            },
+            {
+              "url": "institucionesOficiales/datos",
+              "name": "Administrar datos",
+              "icon": "user-plus",
+              "slug": "institucionesOficiales-datos"
+            }
+          ]          
+        }     
+        
+      ]
+    },
+    
+    {
+      "name": "Ajustes",
+      "icon": "cpu",
+      "dropdown": "1",
+      "slug": "",
+      "submenu": [
+        {          
+          "name": "Usuarios",
+          "dropdown": "1",
+          "icon": "user-check",
+          "slug": "",
+          "url": "usuarios/index"          
+        },
+        {          
+          "name": "Corte",
+          "dropdown": "1",
+          "icon": "user-check",
+          "slug": "",
+          "url": "ajustes/ajuste"          
+        }
+        
+      ]
+    }
+   
+
+   
+  ]
+}
