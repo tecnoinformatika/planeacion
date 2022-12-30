@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-            Schema::create('firmas', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('nombre');
-                $table->string('formato');
-                $table->integer('user_id')->references('id')->on('users');
-                $table->timestamps();
-            });
+        Schema::create('cupos', function (Blueprint $table) {
+            $table->id();            
+            $table->string('CodSede')->nullable();
+            $table->string('jornada')->nullable();
+            $table->string('grado')->nullable();
+            $table->string('cupos')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('firmas');
+        Schema::dropIfExists('cupos');
     }
 };

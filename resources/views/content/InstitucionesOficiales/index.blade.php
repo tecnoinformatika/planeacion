@@ -103,7 +103,7 @@
       </div>
     
   </div>
-</form>
+
 </section>
 <!-- Advanced Search -->
 <section id="advanced-search-datatable">
@@ -133,6 +133,7 @@
                 <th>Modelos</th>
                 <th>Grados</th>
                 <th>Coordenadas</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -144,7 +145,37 @@
   </div>
 </section>
 <!--/ Advanced Search -->
-
+<div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in2">
+  <div class="modal-dialog">
+    <form class="add-new-user modal-content pt-0" method="POST" action="{{ route('editarInstitucion') }}" role="form" enctype="multipart/form-data">
+     @csrf
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
+      <div class="modal-header mb-1">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar SEDE</h5>
+      </div>
+      <div class="modal-body flex-grow-1">
+        <input type="hidden" id="id1" name="id1">
+        
+          <b id="sede1"></b><br>
+          
+               
+        <img  id="escudo1" width="150px" style="background-color: #fff" alt="">
+        <div class="mb-1">
+          <label for="customFile1" class="form-label">Escudo</label>
+          <input class="form-control" type="file" id="escudo" required="require" name="escudo">
+        </div>
+        <img  id="imagen1" width="150px" style="background-color: #fff" alt="">
+        <div class="mb-1">
+          <label for="customFile1" class="form-label">Imagen</label>
+          <input class="form-control" type="file" id="imagen" required="require" name="imagen">
+        </div>
+        
+        <button type="submit" class="btn btn-primary me-1 data-submit">Submit</button>
+        <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
 @endsection
 
 
@@ -221,20 +252,25 @@
         success: function (data) {
             $("#example > tbody").empty();//limpia solo los registros del body
             $.each(data, function (i, item) {
-              var rows ="<tr>" +
-                          "<td id='CodEstable'>" + item.CodEstable + "</td>" +
-                          "<td id='NomEstable'>" + item.NomEstable + "</td>" +
-                          "<td id='CodSede'>" + item.CodSede + "</td>" +
-                          "<td id='NomSede'>" + item.NomSede + "</td>" +
-                          "<td id='Tipo'>" + item.Tipo + "</td>" +
-                          "<td id='Zona'>" + item.Zona + "</td>" +
-                          "<td id='Direccion'>" + item.Direccion + "</td>" +
-                          "<td id='Telefono'>" + item.Telefono + "</td>" +
-                          "<td id='EstadoSede'>" + item.EstadoSede + "</td>" +
-                          "<td id='Niveles'>" + item.Niveles + "</td>" +
-                          "<td id='Modelos'>" + item.Modelos + "</td>" +
-                          "<td id='Grados'>" + item.Grados + "</td>" +
-                          "<td id='coordenadas'>" + item.X + "," + item.Y + "</td>" +
+              var rows =  "<tr>" +
+                            "<td id='CodEstable'>" + item.CodEstable + "</td>" +
+                            "<td id='NomEstable'>" + item.NomEstable + "</td>" +
+                            "<td id='CodSede'>" + item.CodSede + "</td>" +
+                            "<td id='NomSede'>" + item.NomSede + "</td>" +
+                            "<td id='Tipo'>" + item.Tipo + "</td>" +
+                            "<td id='Zona'>" + item.Zona + "</td>" +
+                            "<td id='Direccion'>" + item.Direccion + "</td>" +
+                            "<td id='Telefono'>" + item.Telefono + "</td>" +
+                            "<td id='EstadoSede'>" + item.EstadoSede + "</td>" +
+                            "<td id='Niveles'>" + item.Niveles + "</td>" +
+                            "<td id='Modelos'>" + item.Modelos + "</td>" +
+                            "<td id='Grados'>" + item.Grados + "</td>" +
+                            "<td id='coordenadas'>" + item.X + "," + item.Y + "</td>" +
+                            "<td>"+
+                              "<div class='btn-group'>"+                                
+                                  "<a href='#' class='dropdown-item' data-bs-toggle='modal' data-bs-target='#modals-slide-in2' id='edit-customer1' data-id='" + item.id + "'>Editar</a>"+
+                               "</div>"+
+                            "</td>"+
                           "</tr>";
                 $('#example tbody').append(rows);
             });
@@ -250,6 +286,26 @@
 
     });
   });
+  $('body').on('click', '#edit-customer1', function () {
+      var customer_id = $(this).data('id');
+      
+      $.get('/institucionesOficiales/buscar/'+customer_id, function (data) {
+      
+          $('#btn-update').val("Update");
+          $('#modals-slide-in1').modal('show');
+           
+          (data.escudo !== undefined) ? $('#escudo1').attr("src","/storage/"+ data.escudo) : '' ;
+          (data.imagen !== undefined) ? $('#imagen1').attr("src","/storage/"+ data.imagen) : '' ;
+    
+      });
+      $.get('/institucionesOficiales/buscar1/'+customer_id, function (data2) {
+            $('#btn-update').val("Update");
+            $('#modals-slide-in1').modal('show');
+            $('#id1').val(data2.id);
+            $('#sede1').html(data2.NomSede);   
+          });
+
+    });
 
 </script>
 @endsection

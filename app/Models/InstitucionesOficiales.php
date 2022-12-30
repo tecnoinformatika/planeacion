@@ -25,4 +25,14 @@ class InstitucionesOficiales extends Model
         'X',
         'Y'
     ];
+
+    public function Escudo()
+    {
+        return $this->hasOne(Escudo::class);
+    }
+
+    public function Imagen()
+    {
+        return $this->hasOne(Imagen::class);
+    }
 }

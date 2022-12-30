@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('instituciones_oficiales', function (Blueprint $table) {  
+            $table->integer('imagen_id')->unsigned()->nullable();
+            $table->integer('escudo_id')->unsigned()->nullable();
+
+        });
     }
 
     /**

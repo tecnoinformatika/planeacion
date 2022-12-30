@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/instituciones', [InstitucionesOficialesController::class, 'instituciones'])->name('instituciones');
+Route::get('/institucionesData', [InstitucionesOficialesController::class, 'institucionesData'])->name('institucionesData');
+Route::get('/cupos/{id}', [InstitucionesOficialesController::class, 'cupos'])->name('cupos');

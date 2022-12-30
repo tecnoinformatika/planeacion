@@ -32,7 +32,28 @@
               "slug": "institucionesOficiales-datos"
             }
           ]          
-        }     
+        },
+        {
+          
+          "name": "Cupos",
+          "dropdown": "1",
+          "icon": "file-text",
+          "slug": "",
+          "submenu": [
+            {
+              "url": "institucionesOficiales/indexCupos",
+              "name": "Datos cargados",
+              "icon": "users",
+              "slug": "cupos-index"
+            },
+            {
+              "url": "institucionesOficiales/datosCupos",
+              "name": "Administrar datos",
+              "icon": "user-plus",
+              "slug": "cupos-datos"
+            }
+          ]          
+        }    
         
       ]
     },

@@ -22,6 +22,7 @@ use App\Http\Controllers\SedesController;
 use App\Http\Controllers\RiController;
 use App\Http\Controllers\CrucesController;
 use App\Http\Controllers\InstitucionesOficialesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -268,6 +269,14 @@ Route::group(['prefix' => 'institucionesOficiales'], function () {
     Route::get('datos', [InstitucionesOficialesController::class, 'datos'])->name('institucionesOficiales-datos');
     Route::get('vaciar', [InstitucionesOficialesController::class, 'vaciar'])->name('institucionesOficiales-vaciar');
     Route::post('importar', [InstitucionesOficialesController::class, 'importar'])->name('institucionesOficiales-importar');
+    Route::post('editarInstitucion', [InstitucionesOficialesController::class, 'editarInstitucion'])->name('editarInstitucion');
+    Route::get('buscar/{id}', [InstitucionesOficialesController::class, 'buscar'])->name('buscar');
+    Route::get('buscar1/{id}', [InstitucionesOficialesController::class, 'buscar1'])->name('buscar1');
+    Route::get('indexCupos', [InstitucionesOficialesController::class, 'indexCupos'])->name('cupos-index');
+    Route::get('tablaCupos', [InstitucionesOficialesController::class, 'tablaCupos'])->name('cupos-tabla');
+    Route::get('datosCupos', [InstitucionesOficialesController::class, 'datosCupos'])->name('cupos-datos');
+    Route::post('importarCupos', [InstitucionesOficialesController::class, 'importarCupos'])->name('cupos-importar');
+    Route::get('vaciarCupos', [InstitucionesOficialesController::class, 'vaciarCupos'])->name('cupos-vaciar');
 });
 
 
@@ -297,6 +306,8 @@ Route::group(['prefix' => 'institucion'], function () {
     Route::get('datos', [InstitucionController::class, 'datos'])->name('institucion-datos');
     Route::get('vaciar', [InstitucionController::class, 'vaciar'])->name('institucion-vaciar');
     Route::post('importar', [InstitucionController::class, 'importar'])->name('institucion-importar');
+    
+
 });
 
 Route::group(['prefix' => 'sedes'], function () {

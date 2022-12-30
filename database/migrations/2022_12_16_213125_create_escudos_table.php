@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-            Schema::create('firmas', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('nombre');
-                $table->string('formato');
-                $table->integer('user_id')->references('id')->on('users');
-                $table->timestamps();
-            });
+        Schema::create('escudos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('formato');
+            $table->integer('institucion_id')->references('id')->on('instituciones_oficiales');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('firmas');
+        Schema::dropIfExists('escudos');
     }
 };
