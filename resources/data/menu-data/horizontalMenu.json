@@ -1,11 +1,6 @@
 {
   "menu": [
-    {
-      "name": "Dashboards",
-      "icon": "home",
-      "slug": "dashboard-ecommerce",
-      "url": "dashboard/ecommerce"      
-    },    
+        
     {
       "name": "Data",
       "icon": "database",

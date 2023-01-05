@@ -35,8 +35,7 @@ use App\Http\Controllers\InstitucionesOficialesController;
 */
 
 // Main Page Route
-Route::get('/', [DashboardController::class, 'dashboardEcommerce'])->name('dashboard-ecommerce');
-
+Route::get('/', [SimatController::class, 'index'])->name('simat-index');
 
 /* Route Dashboards */
 Route::group(['prefix' => 'dashboard'], function () {
@@ -272,8 +271,7 @@ Route::group(['prefix' => 'institucionesOficiales'], function () {
     Route::post('editarInstitucion', [InstitucionesOficialesController::class, 'editarInstitucion'])->name('editarInstitucion');
     Route::get('buscar/{id}', [InstitucionesOficialesController::class, 'buscar'])->name('buscar');
     Route::get('buscar1/{id}', [InstitucionesOficialesController::class, 'buscar1'])->name('buscar1');
-    Route::get('indexCupos', [InstitucionesOficialesController::class, 'indexCupos'])->name('cupos-index');
-    Route::get('tablaCupos', [InstitucionesOficialesController::class, 'tablaCupos'])->name('cupos-tabla');
+    Route::get('indexCupos', [InstitucionesOficialesController::class, 'indexCupos'])->name('cupos-index');    
     Route::get('datosCupos', [InstitucionesOficialesController::class, 'datosCupos'])->name('cupos-datos');
     Route::post('importarCupos', [InstitucionesOficialesController::class, 'importarCupos'])->name('cupos-importar');
     Route::get('vaciarCupos', [InstitucionesOficialesController::class, 'vaciarCupos'])->name('cupos-vaciar');
