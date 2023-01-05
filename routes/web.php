@@ -35,7 +35,7 @@ use App\Http\Controllers\InstitucionesOficialesController;
 */
 
 // Main Page Route
-Route::get('/', [SimatController::class, 'index'])->name('simat-index');
+Route::get('/', [InstitucionesOficialesController::class, 'index'])->name('institucionesOficiales-index');
 
 /* Route Dashboards */
 Route::group(['prefix' => 'dashboard'], function () {
